@@ -20,6 +20,7 @@ public class SwitchSkill : Skill
     Dictionary<SwitchMode, int> layerMap;
     SwitchMode currentMode;
     SpriteRenderer casterRender;
+    StaminaBar staminaBar;
 
     void OnValidate()
     {
@@ -48,6 +49,7 @@ public class SwitchSkill : Skill
 
     void Switch() {
         currentMode = currentMode == SwitchMode.Normal ? SwitchMode.Alt : SwitchMode.Normal;
+        staminaBar.Switch();
         WaveEffect.Play(caster.transform.position);
     }
 
