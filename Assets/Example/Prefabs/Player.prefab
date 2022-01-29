@@ -409,6 +409,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84bd3bc9719514f4d848d5b2b62dfd00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cooldown: 5
   modeSettings:
   - mode: 0
     color: {r: 1, g: 0.19999999, b: 0.19999999, a: 1}
