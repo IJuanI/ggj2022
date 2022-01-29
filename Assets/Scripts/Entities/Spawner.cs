@@ -9,6 +9,9 @@ public class Spawner : MonoBehaviour {
     public Platformer.Mechanics.PatrolPath path;
 
     [Header("Spawn Config")]
+    public bool infinite = true;
+    [Tooltip("-1 for infinite distance")]
+    public float spawnDistance = 10f;
     public float spawnRate = 1f;
     public List<EntitySpawn> entities;
     public Transform enemiesParent;
@@ -17,6 +20,7 @@ public class Spawner : MonoBehaviour {
     public bool showGizmos = true;
     public Color gizmosColor = new Color(.2f, .4f, .75f, .1f);
 
+    bool used = false;
     float spawnDelta, spawnCounter;
     float rateSum;
     Collider2D coll;
@@ -36,20 +40,39 @@ public class Spawner : MonoBehaviour {
     void Start() { Initialize(true); }
 
     void Initialize(bool force = false) {
-        if (coll == null && !force)
+        if (coll == null || force)
             coll = GetComponent<Collider2D>();
-        if (collType == null && !force)
+        if (collType == null || force)
             collType = coll is BoxCollider2D ? CollType.Box : CollType.Circle;
+        if (force) {
+            used = false;
+        }
     }
 
     void Update()
     {
-        spawnCounter += Time.deltaTime;
-        while (spawnCounter > spawnDelta)
-        {
-            spawnCounter -= spawnDelta;
-            Spawn();
+        if (!infinite && used) return;
+        if (!ShouldSpawn()) return;
+
+        if (infinite) {
+            spawnCounter += Time.deltaTime;
+            while (spawnCounter > spawnDelta)
+            {
+                spawnCounter -= spawnDelta;
+                Spawn();
+            }
+        } else {
+            for (int i = 0; i < spawnRate; i++)
+                Spawn();
         }
+    }
+
+    bool ShouldSpawn() {
+        if (spawnDistance < 0) return true;
+        if (PlayerMotor.player == null) return infinite;
+
+        float distance = Vector2.Distance(transform.position, PlayerMotor.player.position);
+        return distance <= spawnDistance;
     }
 
     void Spawn() {
@@ -59,6 +82,7 @@ public class Spawner : MonoBehaviour {
         var enemy = Instantiate(enemyPrefab, spawnPoint.Value, enemyPrefab.transform.rotation, enemiesParent);
         if (enemy.GetComponent<Platformer.Mechanics.EnemyController>() != null)
             enemy.GetComponent<Platformer.Mechanics.EnemyController>().path = path;
+        used = true;
     }
 
     Vector2? RandomPointInCollider()
@@ -109,6 +133,7 @@ public class Spawner : MonoBehaviour {
                 throw new System.NotImplementedException();
         }
 
+        Gizmos.DrawWireSphere(transform.position, spawnDistance);
     }
 
 }

@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 1824045667}
   - component: {fileID: 2372721037212556013}
   - component: {fileID: 117101753451249224}
+  - component: {fileID: 577534712421132179}
   m_Layer: 13
   m_Name: Player
   m_TagString: Player
@@ -80,6 +81,7 @@ SpriteRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -319,6 +321,7 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 117101753451249224}
+        m_TargetAssemblyTypeName: 
         m_MethodName: OnCast
         m_Mode: 0
         m_Arguments:
@@ -351,6 +354,18 @@ MonoBehaviour:
   skillActions:
   - trigger: 0
     skill: {fileID: 8057702952631734973}
+--- !u!114 &577534712421132179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1208144871472054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f25ab653f9806c945bf2f58605bef240, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4653277271141065225
 GameObject:
   m_ObjectHideFlags: 0
