@@ -47,6 +47,7 @@ public class SwitchSkill : Skill
 
     void Switch() {
         currentMode = currentMode == SwitchMode.Normal ? SwitchMode.Alt : SwitchMode.Normal;
+        WaveEffect.Play(caster.transform.position);
     }
 
     void UpdateCaster() {
