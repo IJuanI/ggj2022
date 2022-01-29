@@ -19,8 +19,8 @@ GameObject:
   - component: {fileID: 2372721037212556013}
   - component: {fileID: 117101753451249224}
   - component: {fileID: 577534712421132179}
-  - component: {fileID: 6230821795834428131}
   - component: {fileID: 5800851400217313491}
+  - component: {fileID: 6753026224386234897}
   m_Layer: 13
   m_Name: Player
   m_TagString: Player
@@ -336,6 +336,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: da2c4fd9-83be-45ac-9858-76e08a63f890
     m_ActionName: Combat/Cast Alt[/Keyboard/leftShift]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 117101753451249224}
+        m_TargetAssemblyTypeName: SkillsManager, Assembly-CSharp
+        m_MethodName: OnCast
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 16b5b7d1-a27c-4a03-a211-59022bb221f3
+    m_ActionName: Combat/Cast Main[/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Combat
@@ -356,6 +372,8 @@ MonoBehaviour:
   skillActions:
   - trigger: 0
     skill: {fileID: 8057702952631734973}
+  - trigger: 1
+    skill: {fileID: 5867554077790292193}
 --- !u!114 &577534712421132179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -368,22 +386,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f25ab653f9806c945bf2f58605bef240, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6230821795834428131
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1208144871472054}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec6dc609a3382ec4e88b33aba88f1968, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damagerMask:
-    serializedVersion: 2
-    m_Bits: 768
-  health: 20
 --- !u!114 &5800851400217313491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -397,6 +399,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 15
+--- !u!114 &6753026224386234897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1208144871472054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0ba621c2d4efe54781c98dd0433e90e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damagerMask:
+    serializedVersion: 2
+    m_Bits: 768
+  maxHealth: 20
+  invincibilityTime: 1
 --- !u!1 &4653277271141065225
 GameObject:
   m_ObjectHideFlags: 0
@@ -407,6 +426,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4248725885765015793}
   - component: {fileID: 8057702952631734973}
+  - component: {fileID: 5867554077790292193}
+  - component: {fileID: 3380827944990878245}
+  - component: {fileID: 2690610992060799034}
   m_Layer: 13
   m_Name: Skills
   m_TagString: Untagged
@@ -448,3 +470,57 @@ MonoBehaviour:
   - mode: 1
     color: {r: 0.19999999, g: 0.6, b: 1, a: 1}
     targetLayer: 11
+--- !u!114 &5867554077790292193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4653277271141065225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d92818f81e2ac62489c1e37083598e4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 0
+  velocity: 5
+  spawnOffset: 0.25
+  projectile: {fileID: 5413642252314498421, guid: d6b526feed6ea2d4eb96221e605e4175,
+    type: 3}
+  gizmoColor: {r: 0.7075472, g: 0.45092878, b: 0, a: 1}
+--- !u!114 &3380827944990878245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4653277271141065225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d92818f81e2ac62489c1e37083598e4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 0
+  velocity: 5
+  spawnOffset: 0.25
+  projectile: {fileID: 5413642252314498421, guid: fb68959071f122a4aa60a6ae744a9da6,
+    type: 3}
+  gizmoColor: {r: 0.7075472, g: 0.45092878, b: 0, a: 1}
+--- !u!114 &2690610992060799034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4653277271141065225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d92818f81e2ac62489c1e37083598e4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 0
+  velocity: 5
+  spawnOffset: 0.25
+  projectile: {fileID: 5413642252314498421, guid: d6b526feed6ea2d4eb96221e605e4175,
+    type: 3}
+  gizmoColor: {r: 0.7075472, g: 0.45092878, b: 0, a: 1}

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public enum SwitchMode { Normal, Alt }
 
@@ -39,7 +40,7 @@ public class SwitchSkill : Skill
         UpdateCaster();
     }
 
-    public override void Cast()
+    public override void Cast(InputAction action)
     {
         Switch();
         UpdateCaster();

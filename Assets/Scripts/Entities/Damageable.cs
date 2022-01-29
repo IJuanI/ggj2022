@@ -3,10 +3,16 @@ using UnityEngine;
 public class Damageable : MonoBehaviour {
 
     public LayerMask damagerMask;
-    public float health = 10f;
+    public float maxHealth = 10f;
     public float invincibilityTime = 0f;
 
-    float lastHitTime = -Mathf.Infinity;
+    protected float health;
+    protected float lastHitTime = -Mathf.Infinity;
+
+    void Start()
+    {
+        health = maxHealth;
+    }
     
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -25,10 +31,15 @@ public class Damageable : MonoBehaviour {
         Damage(damager.damage);
     }
 
-    void Damage(float amount) {
+    protected virtual void Damage(float amount) {
         if (Time.time < lastHitTime + invincibilityTime) return;
         health -= amount;
         lastHitTime = Time.time;
+        if (health < 0) { Die(); }
+    }
+
+    protected virtual void Die() {
+
     }
 
 }

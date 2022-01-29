@@ -3,12 +3,13 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public enum SkillTrigger { CastAlt }
+public enum SkillTrigger { CastAlt, CastMain }
 
 public class SkillsManager : MonoBehaviour {
 
     public static Dictionary<SkillTrigger, string> triggerNames = new Dictionary<SkillTrigger, string> {
-        { SkillTrigger.CastAlt, "Cast Alt" }
+        { SkillTrigger.CastAlt, "Cast Alt" },
+        { SkillTrigger.CastMain, "Cast Main" }
     };
 
     public List<SkillAction> skillActions;

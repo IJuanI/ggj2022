@@ -16,7 +16,7 @@ public abstract class Skill : MonoBehaviour {
 
     public void TryCast(InputAction action) {
         if (CanCast(action)) {
-            Cast();
+            Cast(action);
             lastCastTime = Time.time;
         }
     }
@@ -27,6 +27,6 @@ public abstract class Skill : MonoBehaviour {
         return Time.time - lastCastTime > cooldown;
     }
 
-    public abstract void Cast();
+    public abstract void Cast(InputAction action);
 
 }
