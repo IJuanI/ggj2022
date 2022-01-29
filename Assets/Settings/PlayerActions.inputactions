@@ -1,0 +1,50 @@
+{
+    "name": "PlayerActions",
+    "maps": [
+        {
+            "name": "Combat",
+            "id": "a0638811-f39e-4457-a086-59e65ab39b8d",
+            "actions": [
+                {
+                    "name": "Cast Alt",
+                    "type": "Button",
+                    "id": "da2c4fd9-83be-45ac-9858-76e08a63f890",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "c202eeee-6826-4cb1-9685-aec89db44402",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard & Mouse",
+                    "action": "Cast Alt",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "Keyboard & Mouse",
+            "bindingGroup": "Keyboard & Mouse",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Mouse>",
+                    "isOptional": true,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}

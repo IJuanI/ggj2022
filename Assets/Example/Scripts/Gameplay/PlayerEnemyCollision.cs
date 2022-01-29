@@ -24,6 +24,8 @@ namespace Platformer.Gameplay
 
             if (willHurtEnemy)
             {
+                if (enemy.killerMask.value != (enemy.killerMask.value | (1 << player.gameObject.layer))) return;
+
                 var enemyHealth = enemy.GetComponent<Health>();
                 if (enemyHealth != null)
                 {
@@ -46,7 +48,7 @@ namespace Platformer.Gameplay
             }
             else
             {
-                Schedule<PlayerDeath>();
+                // Schedule<PlayerDeath>();
             }
         }
     }

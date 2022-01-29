@@ -12,6 +12,7 @@ namespace Platformer.Mechanics
     [RequireComponent(typeof(AnimationController), typeof(Collider2D))]
     public class EnemyController : MonoBehaviour
     {
+        public LayerMask killerMask;
         public PatrolPath path;
         public AudioClip ouch;
 
