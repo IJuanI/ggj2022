@@ -352,6 +352,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 16b5b7d1-a27c-4a03-a211-59022bb221f3
     m_ActionName: Combat/Cast Main[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 117101753451249224}
+        m_TargetAssemblyTypeName: SkillsManager, Assembly-CSharp
+        m_MethodName: OnCast
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 6b211e96-2a53-418d-94ec-8af71c00c052
+    m_ActionName: Combat/Cast Utility[/Keyboard/leftCtrl]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Combat
@@ -374,6 +390,12 @@ MonoBehaviour:
     skill: {fileID: 8057702952631734973}
   - trigger: 1
     skill: {fileID: 5867554077790292193}
+  - trigger: 1
+    skill: {fileID: 3380827944990878245}
+  - trigger: 1
+    skill: {fileID: 2690610992060799034}
+  - trigger: 2
+    skill: {fileID: 3398337889250032952}
 --- !u!114 &577534712421132179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -429,6 +451,7 @@ GameObject:
   - component: {fileID: 5867554077790292193}
   - component: {fileID: 3380827944990878245}
   - component: {fileID: 2690610992060799034}
+  - component: {fileID: 3398337889250032952}
   m_Layer: 13
   m_Name: Skills
   m_TagString: Untagged
@@ -463,6 +486,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 5
+  active: 1
   modeSettings:
   - mode: 0
     color: {r: 1, g: 0.19999999, b: 0.19999999, a: 1}
@@ -483,8 +507,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 0
-  velocity: 5
+  active: 1
+  velocity: 8
   spawnOffset: 0.25
+  lifetime: 3
   projectile: {fileID: 5413642252314498421, guid: d6b526feed6ea2d4eb96221e605e4175,
     type: 3}
   gizmoColor: {r: 0.7075472, g: 0.45092878, b: 0, a: 1}
@@ -501,8 +527,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 0
-  velocity: 5
+  active: 1
+  velocity: 2
   spawnOffset: 0.25
+  lifetime: 3
   projectile: {fileID: 5413642252314498421, guid: fb68959071f122a4aa60a6ae744a9da6,
     type: 3}
   gizmoColor: {r: 0.7075472, g: 0.45092878, b: 0, a: 1}
@@ -519,8 +547,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 0
-  velocity: 5
-  spawnOffset: 0.25
-  projectile: {fileID: 5413642252314498421, guid: d6b526feed6ea2d4eb96221e605e4175,
+  active: 1
+  velocity: 3.5
+  spawnOffset: 0.2
+  lifetime: 3
+  projectile: {fileID: 7704650355029331662, guid: aa7a7a078d85ff4479af08be2780ffa3,
     type: 3}
   gizmoColor: {r: 0.7075472, g: 0.45092878, b: 0, a: 1}
+--- !u!114 &3398337889250032952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4653277271141065225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59d6c594245c7f74b95069e7c63ef9a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 0
+  active: 1
+  currentProjectileIndex: 0

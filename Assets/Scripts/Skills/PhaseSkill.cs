@@ -12,7 +12,7 @@ public struct SwitchSkillColor {
     public int targetLayer;
 }
 
-public class SwitchSkill : Skill
+public class PhaseSkill : Skill
 {
     public List<SwitchSkillColor> modeSettings;
 
@@ -40,7 +40,7 @@ public class SwitchSkill : Skill
         UpdateCaster();
     }
 
-    public override void Cast(InputAction action)
+    public override void Cast(SkillsManager manager, InputAction action)
     {
         Switch();
         UpdateCaster();

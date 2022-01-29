@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 public abstract class Skill : MonoBehaviour {
 
     public float cooldown = 0f;
+    public bool active = true;
     float lastCastTime = -Mathf.Infinity;
 
     void OnValidate()
@@ -14,9 +15,9 @@ public abstract class Skill : MonoBehaviour {
 
     public Transform caster { protected get; set; }
 
-    public void TryCast(InputAction action) {
+    public void TryCast(SkillsManager manager, InputAction action) {
         if (CanCast(action)) {
-            Cast(action);
+            Cast(manager, action);
             lastCastTime = Time.time;
         }
     }
@@ -24,9 +25,9 @@ public abstract class Skill : MonoBehaviour {
     public virtual void Init() { }
 
     public virtual bool CanCast(InputAction action) {
-        return Time.time - lastCastTime > cooldown;
+        return active && Time.time - lastCastTime > cooldown;
     }
 
-    public abstract void Cast(InputAction action);
+    public abstract void Cast(SkillsManager manager, InputAction action);
 
 }

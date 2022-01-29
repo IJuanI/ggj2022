@@ -4714,8 +4714,8 @@ ParticleSystemRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1056812765
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_RenderMode: 1
   m_SortMode: 0
@@ -4799,8 +4799,9 @@ MonoBehaviour:
   damagerMask:
     serializedVersion: 2
     m_Bits: 768
-  health: 0
+  maxHealth: 10
   invincibilityTime: 0
+  lifetime: 6
 --- !u!50 &1533359732385563457
 Rigidbody2D:
   serializedVersion: 4

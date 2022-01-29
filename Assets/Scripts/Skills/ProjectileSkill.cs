@@ -8,7 +8,7 @@ public class ProjectileSkill : Skill {
     public Projectile projectile;
     public Color gizmoColor;
 
-    public override void Cast(InputAction action)
+    public override void Cast(SkillsManager manager, InputAction action)
     {
         Vector2 mousePos = Mouse.current.position.ReadValue();
         Vector2 mouseViewportPos = Camera.main.ScreenToViewportPoint(mousePos);
