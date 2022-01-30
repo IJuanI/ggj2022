@@ -1,10 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-public enum SwitchMode { Normal, Alt }
 
 public class StaminaBar : MonoBehaviour
 {
+    public enum SwitchMode { Normal, Alt }
     public static StaminaBar instance;
     public TMP_Text text;
     public Slider staminaBar;
@@ -35,7 +35,7 @@ public class StaminaBar : MonoBehaviour
     public void UpdateEnergy(float energy){
         staminaBar.maxValue = maxStamina;
         staminaBar.value = energy;
-        text.text = life.ToString("0") + " / " + playerMaxHealth.ToString("0");
+        text.text = stamina.ToString("0") + " / " + maxStamina.ToString("0");
     }
 
     void Update()
@@ -48,7 +48,7 @@ public class StaminaBar : MonoBehaviour
     }
 
     public void Switch() {
-        currentMode = currentMode == SwitchMode.Normal ? SwitchMode.Alt : SwitchMode.Normal;
+        switchMode = switchMode == SwitchMode.Normal ? SwitchMode.Alt : SwitchMode.Normal;
     }
 
     private void DecreaseStamina(){
