@@ -1,18 +1,14 @@
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class StaminaBar : MonoBehaviour
 {
-    public enum SwitchMode { Normal, Alt }
     public static StaminaBar instance;
-    public TMP_Text text;
     public Slider staminaBar;
 
-    float maxStamina;
-    public float stamina;
-    public float dValue;
-
+    public float maxStamina;
+    float stamina;
+    
     SwitchMode switchMode;
     
     private void Awake()
@@ -26,40 +22,24 @@ public class StaminaBar : MonoBehaviour
     }
 
     
-    void Start(){
+    void Start() {
+        stamina = maxStamina;
         switchMode = SwitchMode.Normal;
-        maxStamina = stamina * 2;
-        UpdateEnergy(stamina);
-    }
-
-    public void UpdateEnergy(float energy){
-        staminaBar.maxValue = maxStamina;
-        staminaBar.value = energy;
-        text.text = stamina.ToString("0") + " / " + maxStamina.ToString("0");
+        staminaBar.maxValue = stamina * 2;
+        staminaBar.value = stamina;
     }
 
     void Update()
     {
-        if( switchMode == SwitchMode.Normal && stamina < maxStamina ){
-            IncreaseStamina();
-        }else if( switchMode == SwitchMode.Alt && stamina > 0 ){
-            DecreaseStamina();
-        }
+        stamina += Time.deltaTime * (switchMode == SwitchMode.Normal ? 1 : -1);
+        if (stamina >= maxStamina * 2 || stamina <= 0)
+            SkillsManager.instance.ForceCast(typeof(PhaseSkill), SkillTrigger.CastAlt);
+        stamina = Mathf.Clamp(stamina, 0, maxStamina*2);
+        staminaBar.value = stamina;
     }
 
-    public void Switch() {
-        switchMode = switchMode == SwitchMode.Normal ? SwitchMode.Alt : SwitchMode.Normal;
-    }
-
-    private void DecreaseStamina(){
-        if(stamina != 0){
-            stamina -= dValue * Time.deltaTime;
-        }
-    }
-    private void IncreaseStamina(){
-        if(stamina != maxStamina){
-            stamina += dValue * Time.deltaTime;
-        }
+    public void Switch(SwitchMode mode) {
+        switchMode = mode;
     }
 
 }

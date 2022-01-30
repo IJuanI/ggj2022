@@ -16,14 +16,16 @@ public class PhaseSkill : Skill
 {
     public List<SwitchSkillColor> modeSettings;
 
+    public static SwitchMode PlayerMode = SwitchMode.Normal;
+
     Dictionary<SwitchMode, Color> colorMap;
     Dictionary<SwitchMode, int> layerMap;
     SwitchMode currentMode;
     SpriteRenderer casterRender;
-    StaminaBar staminaBar;
 
-    void OnValidate()
+    protected override void OnValidate()
     {
+        base.OnValidate();
         if (modeSettings == null) return;
 
         colorMap = new Dictionary<SwitchMode, Color>();
@@ -32,6 +34,11 @@ public class PhaseSkill : Skill
             colorMap[color.mode] = color.color;
             layerMap[color.mode] = color.targetLayer;
         }
+    }
+
+    protected override void Start() {
+        base.Start();
+        OnValidate();
     }
 
     public override void Init()
@@ -48,9 +55,12 @@ public class PhaseSkill : Skill
     }
 
     void Switch() {
+        Logger.Log("[Phase] switching");
         currentMode = currentMode == SwitchMode.Normal ? SwitchMode.Alt : SwitchMode.Normal;
-        staminaBar.Switch();
+        PlayerMode = currentMode;
+        StaminaBar.instance.Switch(currentMode);
         WaveEffect.Play(caster.transform.position);
+        ChangeProjectileSkill.instance.UpdateProjectile();
     }
 
     void UpdateCaster() {

@@ -7,7 +7,6 @@ public class HealthBar : MonoBehaviour
 
     public static HealthBar instance;
 
-    public TMP_Text text;
     public Slider healthBar;
 
     float playerMaxHealth;
@@ -33,6 +32,5 @@ public class HealthBar : MonoBehaviour
     {
         float lifePercentage = life / playerMaxHealth;
         healthBar.value = lifePercentage;
-        text.text = life.ToString("0") + " / " + playerMaxHealth.ToString("0");
     }
 }

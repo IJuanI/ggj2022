@@ -17,6 +17,11 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3765120783027568805, guid: fa19d258858bd5040bf12dfa2618e7da,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 4982192343011510250, guid: fa19d258858bd5040bf12dfa2618e7da,
         type: 3}
       propertyPath: m_RootOrder
@@ -71,6 +76,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5079555131488839478, guid: fa19d258858bd5040bf12dfa2618e7da,
+        type: 3}
+      propertyPath: damagerMask.m_Bits
+      value: 10240
       objectReference: {fileID: 0}
     - target: {fileID: 5616979974946274006, guid: fa19d258858bd5040bf12dfa2618e7da,
         type: 3}

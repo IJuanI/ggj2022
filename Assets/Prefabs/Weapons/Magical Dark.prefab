@@ -4812,8 +4812,10 @@ MonoBehaviour:
   damagerMask:
     serializedVersion: 2
     m_Bits: 832
+  dieDelay: 0
   maxHealth: 0
   invincibilityTime: 0
+  mainObject: {fileID: 0}
   health: 0
   lifetime: 6
 --- !u!1 &1611160775618410
@@ -14091,7 +14093,7 @@ ParticleSystemRenderer:
   m_SortingFudge: 0
   m_NormalDirection: 1
   m_ShadowBias: 0
-  m_RenderAlignment: 0
+  m_RenderAlignment: 3
   m_Pivot: {x: 0, y: 0, z: 0}
   m_Flip: {x: 0, y: 0, z: 0}
   m_UseCustomVertexStreams: 0

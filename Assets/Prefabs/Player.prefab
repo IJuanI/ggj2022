@@ -342,6 +342,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: fd79cc0b-85ad-4e19-8ace-fd932a5a71c8
     m_ActionName: Default/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 91dfddff-0fea-4659-9ae5-6f79293091b8
+    m_ActionName: Default/Jump[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Default
@@ -415,8 +419,12 @@ MonoBehaviour:
   damagerMask:
     serializedVersion: 2
     m_Bits: 768
-  maxHealth: 20
+  dieDelay: 0
+  maxHealth: 40
   invincibilityTime: 1
+  mainObject: {fileID: 0}
+  animator: {fileID: 1047636037}
+  health: 0
 --- !u!54 &8546135501222028535
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -494,7 +502,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84bd3bc9719514f4d848d5b2b62dfd00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 5
+  cooldown: 1.5
   active: 1
   modeSettings:
   - mode: 0
@@ -515,8 +523,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d92818f81e2ac62489c1e37083598e4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 0
+  cooldown: 0.3
   active: 1
+  singleMode: 1
+  targetMode: 0
   velocity: 8
   spawnOffset: 0.25
   projectile: {fileID: 5413642252314498421, guid: d6b526feed6ea2d4eb96221e605e4175,
@@ -534,9 +544,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d92818f81e2ac62489c1e37083598e4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 0
+  cooldown: 0.3
   active: 1
-  velocity: 2
+  singleMode: 1
+  targetMode: 1
+  velocity: 8
   spawnOffset: 0.25
   projectile: {fileID: 8310905214013260157, guid: fb68959071f122a4aa60a6ae744a9da6,
     type: 3}
@@ -553,8 +565,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d92818f81e2ac62489c1e37083598e4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 0
+  cooldown: 1.5
   active: 1
+  singleMode: 0
+  targetMode: 0
   velocity: 3.5
   spawnOffset: 0.2
   projectile: {fileID: 7704650355029331662, guid: aa7a7a078d85ff4479af08be2780ffa3,

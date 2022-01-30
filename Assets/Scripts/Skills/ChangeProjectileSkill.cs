@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class ChangeProjectileSkill : Skill
@@ -7,29 +6,50 @@ public class ChangeProjectileSkill : Skill
 
     public int currentProjectileIndex = 0;
     
-    List<Skill> projectileSkills = new List<Skill>();
+    List<ProjectileSkill> projectileSkills = new List<ProjectileSkill>();
 
-    void Start()
+    public static ChangeProjectileSkill instance;
+
+    void Awake()
     {
+        instance = this;
+    }
+
+    protected override void Start()
+    {
+        base.Start();
         SkillsManager manager = GetComponentsInParent<SkillsManager>()[0];
         foreach (var skillAction in manager.skillActions) {
             var skill = skillAction.skill;
             if (skill is ProjectileSkill)
-                projectileSkills.Add(skill);
+                projectileSkills.Add(skill as ProjectileSkill);
         }
 
-        SetActiveProjectile(currentProjectileIndex);
+        currentProjectileIndex = SetActiveProjectile(currentProjectileIndex);
     }
 
     public override void Cast(SkillsManager manager, InputAction action)
     {
-        currentProjectileIndex = (currentProjectileIndex + 1) % projectileSkills.Count;
-        SetActiveProjectile(currentProjectileIndex);
+        currentProjectileIndex = SetActiveProjectile(currentProjectileIndex + 1);
     }
 
-    void SetActiveProjectile(int index) {
+    int SetActiveProjectile(int index) {
+        ProjectileSkill targetSkill;
+        do {
+            index = index % projectileSkills.Count;
+            targetSkill = projectileSkills[index];
+            ++index;
+        } while (!targetSkill.ActivePhase());
+        --index;
+
         foreach (var skill in projectileSkills)
             skill.active = false;
-        projectileSkills[index].active = true;
+        targetSkill.active = true;
+
+        return index;
+    }
+
+    public void UpdateProjectile() {
+        currentProjectileIndex = SetActiveProjectile(0);
     }
 }

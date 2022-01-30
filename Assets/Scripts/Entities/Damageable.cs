@@ -9,19 +9,11 @@ public class Damageable : MonoBehaviour {
     public float maxHealth = 10f;
     public float invincibilityTime = 0f;
     public GameObject mainObject;
+    public Animator animator;
 
     [SerializeField]
     protected float health;
     protected float lastHitTime = -Mathf.Infinity;
-
-    Animator anim;
-
-    void Awake()
-    {
-        anim = GetComponent<Animator>();
-        if (anim == null)   
-            anim = GetComponentInChildren<Animator>();
-    }
 
     void Start()
     {
@@ -38,7 +30,7 @@ public class Damageable : MonoBehaviour {
         OnHit(other.gameObject.GetComponent<Damager>());
     }
 
-    void OnHit(Damager damager) {
+    protected virtual void OnHit(Damager damager) {
         if (damager == null) return;
         if (damagerMask.value != (damagerMask.value | (1 << damager.gameObject.layer))) return;
 
@@ -49,14 +41,14 @@ public class Damageable : MonoBehaviour {
         if (Time.time < lastHitTime + invincibilityTime) return;
         health -= amount;
         lastHitTime = Time.time;
-        if (anim) anim.SetTrigger("hurt");
+        if (animator) animator.SetTrigger("hurt");
         if (health < 0) { Die(); }
     }
 
     protected virtual void Die() {
         GetComponents<Collider>().ToList().ForEach(c => c.enabled = false);
         GetComponentsInChildren<Collider>().ToList().ForEach(c => c.enabled = false);
-        if (anim) anim.SetTrigger("die");
+        if (animator) animator.SetTrigger("die");
         StartCoroutine(DieDelayed());
     }
 

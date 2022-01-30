@@ -7,9 +7,17 @@ public class Stalker : MonoBehaviour
 
     public Transform target;
 
+    Rigidbody rb;
+
+    void Start()
+    {
+        rb = GetComponentInParent<Rigidbody>();
+    }
+
     void Update()
     {
-
-        transform.LookAt(target, Camera.main.transform.up);
+        Vector3 forward = target.position - transform.position;
+        forward.y = 0;
+        transform.rotation = Quaternion.LookRotation(forward, rb.transform.up);
     }
 }

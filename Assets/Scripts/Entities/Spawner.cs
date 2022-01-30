@@ -7,8 +7,6 @@ enum CollType { Box, Sphere }
 [RequireComponent(typeof(Collider))]
 public class Spawner : MonoBehaviour {
 
-    public Platformer.Mechanics.PatrolPath path;
-
     [Header("Spawn Config")]
     public bool infinite = true;
     [Tooltip("-1 for infinite distance")]
@@ -38,7 +36,7 @@ public class Spawner : MonoBehaviour {
         spawnDelta = 1f / spawnRate;
     }
 
-    void Start() { Initialize(true); }
+    void Start() { OnValidate(); Initialize(true); }
 
     void Initialize(bool force = false) {
         if (coll == null || force)
