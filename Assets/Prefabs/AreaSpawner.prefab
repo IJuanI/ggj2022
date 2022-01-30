@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 374030744801394727}
-  - component: {fileID: 5569241072199965076}
+  - component: {fileID: 3223448359249188510}
   - component: {fileID: 277574436655311710}
   m_Layer: 0
   m_Name: AreaSpawner
@@ -32,32 +32,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &5569241072199965076
-BoxCollider2D:
+--- !u!65 &3223448359249188510
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 380790084048394499}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 1}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5, y: 3}
-  m_EdgeRadius: 0
+  m_Size: {x: 6, y: 3, z: 9}
+  m_Center: {x: 0.5, y: -1, z: -2}
 --- !u!114 &277574436655311710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,8 +57,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54a3a1eb3cf252245ac439006ae2f99b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnRate: 2
-  entities: []
+  path: {fileID: 0}
+  infinite: 0
+  spawnDistance: 16
+  spawnRate: 15
+  entities:
+  - rate: 1
+    entity: {fileID: 6250609243269142771, guid: fa19d258858bd5040bf12dfa2618e7da,
+      type: 3}
+  - rate: 0.2
+    entity: {fileID: 3355676499375853010, guid: e0c2379c62a51c14f93581181e61497d,
+      type: 3}
   enemiesParent: {fileID: 0}
   showGizmos: 1
   gizmosColor: {r: 0.41960785, g: 0.8392157, b: 0.769281, a: 0.40784314}

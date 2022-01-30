@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 198159274938206214}
   - component: {fileID: 199368054502676096}
   - component: {fileID: 114960206652300638}
-  - component: {fileID: 2032669599931446980}
   - component: {fileID: 5493620131556189820}
-  - component: {fileID: 5413642252314498421}
-  - component: {fileID: 1533359732385563457}
+  - component: {fileID: 2221770487913811862}
+  - component: {fileID: 3614714394049847178}
+  - component: {fileID: 8310905214013260157}
   m_Layer: 0
   m_Name: Magical Dark
   m_TagString: Untagged
@@ -4755,22 +4755,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OnlyDeactivate: 0
---- !u!58 &2032669599931446980
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1545806602296978}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 1.108677
 --- !u!114 &5493620131556189820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4784,7 +4768,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 15
---- !u!114 &5413642252314498421
+--- !u!135 &2221770487913811862
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545806602296978}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.23137674
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &3614714394049847178
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545806602296978}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!114 &8310905214013260157
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4798,31 +4811,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damagerMask:
     serializedVersion: 2
-    m_Bits: 768
-  maxHealth: 10
+    m_Bits: 832
+  maxHealth: 0
   invincibilityTime: 0
+  health: 0
   lifetime: 6
---- !u!50 &1533359732385563457
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1545806602296978}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &1611160775618410
 GameObject:
   m_ObjectHideFlags: 0

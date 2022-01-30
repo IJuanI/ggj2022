@@ -36,7 +36,7 @@ public class PhaseSkill : Skill
     public override void Init()
     {
         currentMode = SwitchMode.Normal;
-        casterRender = caster.GetComponent<SpriteRenderer>();
+        casterRender = caster.GetComponentInChildren<SpriteRenderer>();
         UpdateCaster();
     }
 

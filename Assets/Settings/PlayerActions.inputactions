@@ -2,9 +2,18 @@
     "name": "PlayerActions",
     "maps": [
         {
-            "name": "Combat",
+            "name": "Default",
             "id": "a0638811-f39e-4457-a086-59e65ab39b8d",
             "actions": [
+                {
+                    "name": "Movement",
+                    "type": "Value",
+                    "id": "fd79cc0b-85ad-4e19-8ace-fd932a5a71c8",
+                    "expectedControlType": "Stick",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
                 {
                     "name": "Cast Alt",
                     "type": "Button",
@@ -27,6 +36,15 @@
                     "name": "Cast Utility",
                     "type": "Button",
                     "id": "6b211e96-2a53-418d-94ec-8af71c00c052",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "91dfddff-0fea-4659-9ae5-6f79293091b8",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -64,6 +82,72 @@
                     "processors": "",
                     "groups": "Keyboard & Mouse",
                     "action": "Cast Utility",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "2D Vector",
+                    "id": "edc08a88-4c9e-4900-9c33-19595e883138",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "7fca1892-bb1b-47f6-963d-2b364415fb70",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard & Mouse",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "80f30cef-7350-4acd-b189-17d624b3a1bd",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard & Mouse",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "9fb88529-d533-45c4-9517-929cb35747a5",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard & Mouse",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "b074e28a-c483-4a06-857d-f6380f835484",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard & Mouse",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "d338e685-7aca-4e1a-8ac3-882ce795da0b",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard & Mouse",
+                    "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

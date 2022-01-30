@@ -1,9 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
-enum CollType { Box, Circle }
+enum CollType { Box, Sphere }
 
-[RequireComponent(typeof(Collider2D))]
+[RequireComponent(typeof(Collider))]
 public class Spawner : MonoBehaviour {
 
     public Platformer.Mechanics.PatrolPath path;
@@ -23,7 +24,7 @@ public class Spawner : MonoBehaviour {
     bool used = false;
     float spawnDelta, spawnCounter;
     float rateSum;
-    Collider2D coll;
+    Collider coll;
     CollType? collType;
 
     void OnValidate()
@@ -41,9 +42,9 @@ public class Spawner : MonoBehaviour {
 
     void Initialize(bool force = false) {
         if (coll == null || force)
-            coll = GetComponent<Collider2D>();
+            coll = GetComponent<Collider>();
         if (collType == null || force)
-            collType = coll is BoxCollider2D ? CollType.Box : CollType.Circle;
+            collType = coll is BoxCollider ? CollType.Box : CollType.Sphere;
         if (force) {
             used = false;
         }
@@ -71,17 +72,27 @@ public class Spawner : MonoBehaviour {
         if (spawnDistance < 0) return true;
         if (PlayerMotor.player == null) return infinite;
 
-        float distance = Vector2.Distance(transform.position, PlayerMotor.player.position);
+        Vector3 playerPos = PlayerMotor.player.position;
+        Vector3 spawnPos = transform.position;
+        playerPos.y = 0;
+        spawnPos.y = 0;
+        float distance = Vector3.Distance(spawnPos, playerPos);
         return distance <= spawnDistance;
     }
 
     void Spawn() {
+        if (EnemyManager.enemyCount >= EnemyManager.Instance.maxEnemies) return;
         var enemyPrefab = PickEntity();
-        var spawnPoint = RandomPointInCollider();
-        if (spawnPoint == null) return;
-        var enemy = Instantiate(enemyPrefab, spawnPoint.Value, enemyPrefab.transform.rotation, enemiesParent);
-        if (enemy.GetComponent<Platformer.Mechanics.EnemyController>() != null)
-            enemy.GetComponent<Platformer.Mechanics.EnemyController>().path = path;
+        var randPoint = RandomPointInCollider();
+        if (randPoint == null) return;
+        Vector3 spawnPoint = new Vector3(randPoint.Value.x, transform.position.y, randPoint.Value.y);
+        var enemy = Instantiate(enemyPrefab, spawnPoint, enemyPrefab.transform.rotation, enemiesParent);
+        var obsession = enemy.GetComponent<Obsessed>();
+        if (obsession != null)
+            obsession.target = PlayerMotor.player;
+        var stalker = enemy.GetComponentInChildren<Stalker>();
+        if (stalker != null)
+            stalker.target = Camera.main.transform;
         used = true;
     }
 
@@ -92,9 +103,9 @@ public class Spawner : MonoBehaviour {
             case CollType.Box:
                 return new Vector2(
                     Random.Range(coll.bounds.min.x, coll.bounds.max.x),
-                    Random.Range(coll.bounds.min.y, coll.bounds.max.y)
+                    Random.Range(coll.bounds.min.z, coll.bounds.max.z)
                 );
-            case CollType.Circle:
+            case CollType.Sphere:
                 return (Vector2) coll.bounds.center + Random.insideUnitCircle * coll.bounds.extents.magnitude;
         }
 
@@ -126,7 +137,7 @@ public class Spawner : MonoBehaviour {
             case CollType.Box:
                 Gizmos.DrawCube(coll.bounds.center, coll.bounds.size);
                 break;
-            case CollType.Circle:
+            case CollType.Sphere:
                 Gizmos.DrawSphere(coll.bounds.center, coll.bounds.extents.x);
                 break;
             default:

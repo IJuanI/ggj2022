@@ -15,9 +15,11 @@ public class ProjectileSkill : Skill {
         Vector2 dir = mouseViewportPos - (Vector2)Camera.main.WorldToViewportPoint(caster.position);
         dir.Normalize();
 
-        Vector2 spawnPos = caster.transform.position + (Vector3)dir * spawnOffset;
+        Vector3 xzDir = new Vector3(dir.x, 0, dir.y);
+        Vector3 spawnPos = caster.position + xzDir * spawnOffset;
         Projectile newProjectile = Instantiate(projectile, spawnPos, Quaternion.identity);
-        newProjectile.GetComponent<Rigidbody2D>().velocity = dir * velocity;
+        newProjectile.gameObject.layer = caster.gameObject.layer;
+        newProjectile.GetComponent<Rigidbody>().velocity = xzDir * velocity;
     }
 
     void OnDrawGizmos()
