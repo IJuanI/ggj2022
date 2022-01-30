@@ -1,0 +1,112 @@
+{
+    "frames": [
+        {
+            "filename": "girl_run_0",
+            "frame": {
+                "w": 400,
+                "h": 500,
+                "x": 0,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "girl_run_1",
+            "frame": {
+                "w": 400,
+                "h": 500,
+                "x": 400,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "girl_run_2",
+            "frame": {
+                "w": 400,
+                "h": 500,
+                "x": 800,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "girl_run_3",
+            "frame": {
+                "w": 400,
+                "h": 500,
+                "x": 1200,
+                "y": 0
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "girl_stand_0",
+            "frame": {
+                "w": 400,
+                "h": 500,
+                "x": 0,
+                "y": 500
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "girl_stand_1",
+            "frame": {
+                "w": 400,
+                "h": 500,
+                "x": 400,
+                "y": 500
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "girl_stand_2",
+            "frame": {
+                "w": 400,
+                "h": 500,
+                "x": 800,
+                "y": 500
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        },
+        {
+            "filename": "girl_stand_3",
+            "frame": {
+                "w": 400,
+                "h": 500,
+                "x": 1200,
+                "y": 500
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            }
+        }
+    ],
+    "meta": {
+        "description": "Atlas generado con Atlas Packer Gamma V2",
+        "web": "https://gammafp.github.io/atlas-packer-phaser/"
+    }
+}
